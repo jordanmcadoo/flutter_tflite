@@ -18,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   List _recognitions;
 
   Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     recognizeImage(image);
     setState(() {
       _image = image;
@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
   Future loadModel() async {
     try {
       String res = await Tflite.loadModel(
-        model: "assets/mobilenet_v1_1.0_224.tflite",
+        model: "assets/graph.tflite",
         labels: "assets/labels.txt",
       );
       print(res);
